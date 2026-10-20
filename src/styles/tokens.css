@@ -1,0 +1,61 @@
+/* Design tokens: colour, type, spacing, motion. */
+:root {
+  /* Colour — near-black canvas, warm off-white ink, one warm accent
+     taken from the interior lighting in the BuildRoots renders. */
+  --bg: #0a0a0b;
+  --bg-raised: #121214;
+  --ink: #ecebe6;
+  --ink-muted: rgb(236 235 230 / 0.62);
+  /* 0.56 keeps small text at ≥4.5:1 contrast on --bg (WCAG AA). */
+  --ink-faint: rgb(236 235 230 / 0.56);
+  --line: rgb(236 235 230 / 0.12);
+  --accent: #c9a27c;
+  --frost: rgb(20 20 22 / 0.55);
+
+  /* Font families */
+  --font-sans: 'Inter Tight Variable', 'Inter Tight', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'Geist Mono Variable', 'Geist Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+
+  /* Fluid type scale (min at 375px, max at 1920px) */
+  --fs-display: clamp(3.25rem, 1.6rem + 7.2vw, 11rem);
+  --fs-h1: clamp(2.5rem, 1.6rem + 4vw, 6.5rem);
+  --fs-h2: clamp(1.75rem, 1.3rem + 2vw, 3.75rem);
+  --fs-h3: clamp(1.25rem, 1.1rem + 0.7vw, 1.75rem);
+  --fs-body: clamp(1rem, 0.95rem + 0.2vw, 1.125rem);
+  --fs-small: 0.875rem;
+  --fs-caption: 0.6875rem;
+
+  /* Weights — kept to three */
+  --fw-light: 300;
+  --fw-regular: 400;
+  --fw-medium: 500;
+
+  /* Tracking */
+  --tracking-display: -0.045em;
+  --tracking-heading: -0.03em;
+  --tracking-caption: 0.14em;
+
+  /* Spacing — 4/8pt rhythm */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --gutter: clamp(1rem, 0.6rem + 1.8vw, 2.5rem);
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast: 160ms;
+  --dur-base: 320ms;
+  --dur-slow: 900ms;
+
+  /* Layers */
+  --z-canvas: 0;
+  --z-content: 10;
+  --z-nav: 50;
+  --z-loader: 100;
+}

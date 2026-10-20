@@ -1,0 +1,17 @@
+.loader {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-loader);
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: var(--gutter);
+  background: var(--bg);
+}
+
+.loader__name {
+  font-size: var(--fs-h2);
+  font-weight: var(--fw-light);
+  letter-spacing: var(--tracking-heading);
+  line-height: 1;
+}

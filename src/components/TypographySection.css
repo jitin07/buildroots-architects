@@ -1,0 +1,48 @@
+.type-section {
+  position: relative;
+  height: 100svh;
+  padding: calc(var(--space-16) + var(--space-4)) var(--gutter) var(--gutter);
+}
+
+.type-section__statement {
+  position: relative;
+  height: 100%;
+}
+
+.type-section__word {
+  position: absolute;
+  white-space: nowrap;
+}
+
+.type-section__word--tl {
+  top: 0;
+  left: 0;
+}
+
+.type-section__word--mr {
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+}
+
+.type-section__word--bl {
+  bottom: 0;
+  left: 0;
+}
+
+.type-section__caption {
+  position: absolute;
+  right: var(--gutter);
+  bottom: var(--gutter);
+  max-width: 22ch;
+  text-align: right;
+}
+
+@media (max-width: 767px) {
+  .type-section__caption {
+    right: auto;
+    left: var(--gutter);
+    bottom: calc(var(--gutter) + var(--fs-display) * 1.1);
+    text-align: left;
+  }
+}

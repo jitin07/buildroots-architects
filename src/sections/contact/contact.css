@@ -1,0 +1,209 @@
+.contact {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+  gap: clamp(var(--space-12), 6vw, 8rem);
+  align-items: start;
+}
+
+.contact__intro {
+  display: grid;
+  gap: var(--space-6);
+  position: sticky;
+  top: 6rem;
+}
+
+.contact__title {
+  font-size: clamp(3rem, 1.6rem + 5vw, 8rem);
+}
+
+.contact__details {
+  display: grid;
+  gap: var(--space-4);
+  margin-top: var(--space-4);
+}
+
+.contact__details div {
+  display: grid;
+  gap: var(--space-1);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--line);
+}
+
+.contact__details dd {
+  margin: 0;
+  font-size: var(--fs-h3);
+}
+
+.contact__details a {
+  text-decoration: underline;
+  text-decoration-color: var(--line);
+  text-underline-offset: 0.25em;
+  transition: color var(--dur-fast) var(--ease-out), text-decoration-color var(--dur-fast) var(--ease-out);
+}
+
+.contact__details a:hover,
+.contact__details a:focus-visible {
+  color: var(--accent);
+  text-decoration-color: currentColor;
+}
+
+.contact__whatsapp {
+  justify-self: start;
+}
+
+.contact__dev-note {
+  padding: var(--space-3) var(--space-4);
+  border: 1px dashed var(--line);
+  color: var(--ink-faint);
+}
+
+/* ── Form ────────────────────────────────────────────────── */
+
+.contact__form {
+  display: grid;
+  gap: var(--space-6);
+}
+
+.contact__required {
+  color: var(--ink-faint);
+}
+
+.field-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-6);
+}
+
+.field {
+  display: grid;
+  gap: var(--space-2);
+  align-content: start;
+}
+
+.field label {
+  font-size: var(--fs-small);
+  color: var(--ink-muted);
+}
+
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  min-height: 48px;
+  padding: var(--space-3) 0;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  border-radius: 0;
+  background: transparent;
+  color: var(--ink);
+  font-size: var(--fs-body);
+  transition: border-color var(--dur-base) var(--ease-out);
+}
+
+.field select {
+  appearance: none;
+  cursor: pointer;
+  background-image: linear-gradient(45deg, transparent 50%, var(--ink-muted) 50%),
+    linear-gradient(135deg, var(--ink-muted) 50%, transparent 50%);
+  background-position: calc(100% - 10px) 55%, calc(100% - 5px) 55%;
+  background-size: 5px 5px;
+  background-repeat: no-repeat;
+}
+
+.field select option {
+  background: var(--bg-raised);
+  color: var(--ink);
+}
+
+.field textarea {
+  resize: vertical;
+  min-height: 8rem;
+  line-height: 1.55;
+}
+
+.field input::placeholder,
+.field textarea::placeholder {
+  color: var(--ink-faint);
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  outline: none;
+  border-bottom-color: var(--accent);
+}
+
+.field input:focus-visible,
+.field select:focus-visible,
+.field textarea:focus-visible {
+  box-shadow: 0 1px 0 0 var(--accent);
+}
+
+.field [aria-invalid='true'] {
+  border-bottom-color: #e08a6f;
+}
+
+.field__error {
+  font-size: var(--fs-small);
+  color: #f0a58c;
+}
+
+.contact__trap {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.contact__actions {
+  display: flex;
+  gap: var(--space-4);
+  padding-top: var(--space-2);
+}
+
+.contact__alert {
+  display: grid;
+  gap: var(--space-4);
+  padding: var(--space-6);
+  border: 1px solid rgb(224 138 111 / 0.45);
+  background: rgb(224 138 111 / 0.06);
+}
+
+.contact__alert-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.contact__success {
+  display: grid;
+  gap: var(--space-4);
+  align-content: start;
+  padding: var(--space-8);
+  border: 1px solid var(--line);
+}
+
+.contact__success .t-caption {
+  color: var(--accent);
+}
+
+.contact__success .button {
+  justify-self: start;
+}
+
+@media (max-width: 899px) {
+  .contact {
+    grid-template-columns: 1fr;
+  }
+
+  .contact__intro {
+    position: static;
+  }
+}
+
+@media (max-width: 559px) {
+  .field-row {
+    grid-template-columns: 1fr;
+  }
+}

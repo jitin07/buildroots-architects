@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en-IN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>BuildRoots Architects — Architecture, Interiors &amp; Construction in Greater Noida</title>
+    <meta
+      name="description"
+      content="BuildRoots Architects is an architecture, interior design and construction practice in Greater Noida, India — from concept design and 3D visualisation to BOQ, cost planning and site execution."
+    />
+    <meta name="theme-color" content="#0a0a0b" />
+    <meta name="color-scheme" content="dark" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Open Graph / social previews. Absolute URLs are added at build time from SITE_URL (see vite.config.ts). -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="BuildRoots Architects" />
+    <meta property="og:title" content="BuildRoots Architects — Spaces shaped around life" />
+    <meta
+      property="og:description"
+      content="Architecture, interior design and construction in Greater Noida, India."
+    />
+    <meta property="og:image:width" content="1280" />
+    <meta property="og:image:height" content="720" />
+    <meta property="og:image:alt" content="Concept render of a contemporary two-storey house at dusk" />
+    <meta property="og:locale" content="en_IN" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <!--seo-absolute-->
+
+    <style>
+      /* Paint the page dark before CSS/JS load to avoid a white flash. */
+      html, body { background: #0a0a0b; color: #ecebe6; margin: 0; }
+      /* Static loading screen: paints before any JavaScript runs; React's LoadingScreen replaces it seamlessly. */
+      .boot-loader {
+        position: fixed; inset: 0; z-index: 100; display: flex; align-items: flex-end;
+        padding: clamp(1rem, 0.6rem + 1.8vw, 2.5rem); background: #0a0a0b;
+        font-family: 'Inter Tight Variable', system-ui, -apple-system, 'Segoe UI', sans-serif;
+      }
+      .boot-loader span {
+        font-size: clamp(1.75rem, 1.3rem + 2vw, 3.75rem); font-weight: 300; letter-spacing: -0.03em; line-height: 1;
+      }
+    </style>
+    <noscript><style>.boot-loader { display: none; }</style></noscript>
+  </head>
+  <body>
+    <noscript>
+      <div style="max-width: 40rem; margin: 4rem auto; padding: 0 1.5rem; font-family: system-ui, sans-serif; line-height: 1.6">
+        <h1>BuildRoots Architects</h1>
+        <p>Architecture, interior design and construction practice based in Greater Noida, India.</p>
+        <p>This site needs JavaScript for its 3D experience. To start a project, email
+          <a href="mailto:connect@buildroots.in" style="color: #c9a27c">connect@buildroots.in</a>.</p>
+      </div>
+    </noscript>
+    <div class="boot-loader" aria-hidden="true"><span>BuildRoots</span></div>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

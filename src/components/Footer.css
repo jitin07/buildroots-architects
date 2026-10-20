@@ -1,0 +1,112 @@
+/* The footer waits beneath the page content: sticky to the bottom with a
+   lower z-index, so .site-content (z-index 1, opaque) lifts away to reveal it. */
+.footer {
+  position: sticky;
+  bottom: 0;
+  z-index: 0;
+  min-height: 100svh;
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
+  gap: clamp(var(--space-6), 4svh, var(--space-12));
+  padding: calc(var(--space-16) + var(--space-6)) var(--gutter) var(--gutter);
+  background:
+    radial-gradient(ellipse at 50% 120%, rgb(201 162 124 / 0.1), transparent 55%),
+    #070708;
+  overflow: hidden;
+}
+
+.footer__top {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: end;
+  gap: var(--space-6);
+}
+
+.footer__tagline {
+  max-width: 18ch;
+}
+
+.footer__columns {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+  gap: var(--space-8) var(--gutter);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--line);
+}
+
+.footer__col {
+  display: grid;
+  gap: var(--space-4);
+  align-content: start;
+}
+
+.footer__col .t-caption {
+  color: var(--accent);
+}
+
+.footer__col ul {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: var(--space-2);
+}
+
+.footer__col a {
+  display: inline-block;
+  padding-block: var(--space-1);
+  color: var(--ink);
+  transition: color var(--dur-fast) var(--ease-out), transform var(--dur-base) var(--ease-out);
+}
+
+.footer__col a:hover,
+.footer__col a:focus-visible {
+  color: var(--accent);
+  transform: translateX(4px);
+}
+
+.footer__muted {
+  color: var(--ink-muted);
+}
+
+.footer__wordmark {
+  align-self: end;
+  display: flex;
+  justify-content: space-between;
+  /* Bounded by height too, so the whole footer fits one screen. */
+  font-size: clamp(3.5rem, min(15.6vw, 24svh), 20rem);
+  font-weight: var(--fw-medium);
+  line-height: 0.8;
+  letter-spacing: -0.04em;
+  color: var(--ink);
+  user-select: none;
+}
+
+.footer__letter-mask {
+  display: inline-block;
+  overflow: hidden;
+  /* Extra room so the letter's bottom isn't clipped at rest. */
+  padding-bottom: 0.04em;
+}
+
+.footer__letter {
+  display: inline-block;
+  will-change: transform;
+}
+
+.footer__bottom {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--line);
+  color: var(--ink-faint);
+}
+
+/* When the footer is taller than the screen (narrow/short viewports, measured
+   in Footer.tsx), it scrolls normally instead of hiding its top behind the curtain. */
+.footer--static {
+  position: relative;
+  min-height: auto;
+}
