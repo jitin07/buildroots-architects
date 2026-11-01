@@ -1,31 +1,31 @@
-import LoadingScreen from './components/LoadingScreen'
-import Scene from './components/Scene'
-import Navigation from './components/Navigation'
-import ScrollExperience from './components/ScrollExperience'
-import StoryStage from './story/StoryStage'
-import DevHud from './components/DevHud'
-import Footer from './components/Footer'
-import Portfolio from './sections/portfolio/Portfolio'
-import Services from './sections/Services'
-import About from './sections/About'
-import Contact from './sections/contact/Contact'
+import { Nav } from "./components/Nav";
+import { Hero } from "./components/Hero";
+import { Intro } from "./components/Intro";
+import { Flagship } from "./components/Flagship";
+import { Interiors } from "./components/Interiors";
+import { StorySequence } from "./components/StorySequence";
+import { FloorPlan } from "./components/FloorPlan";
+import { Services } from "./components/Services";
+import { Process } from "./components/Process";
+import { Contact } from "./components/Contact";
+import { Footer } from "./components/Footer";
 
 export default function App() {
   return (
-    <>
-      <LoadingScreen />
-      <Navigation />
-      <ScrollExperience>
-        <StoryStage>
-          <Scene />
-        </StoryStage>
-        <Portfolio />
+    <div className="root">
+      <Nav />
+      <main>
+        <Hero />
+        <Intro />
+        <Flagship />
+        <Interiors />
+        <StorySequence />
+        <FloorPlan />
         <Services />
-        <About />
+        <Process />
         <Contact />
-      </ScrollExperience>
+      </main>
       <Footer />
-      {import.meta.env.DEV && <DevHud />}
-    </>
-  )
+    </div>
+  );
 }

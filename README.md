@@ -1,74 +1,41 @@
-# BuildRoots Architects — website
+# BuildRoots Architects — Website
 
-Immersive single-page site for BuildRoots Architects (architecture, interior design and construction, Greater Noida, India): a scroll-driven 3D walk through a house, followed by portfolio, services, about and contact sections.
+Vite + React + TypeScript implementation of the Claude Design hand-off `project/Home.dc.html`.
 
-**Stack:** React 19 · TypeScript · Vite 8 · Three.js / React Three Fiber / Drei · @react-three/postprocessing · GSAP ScrollTrigger
-
-## Getting started
-
-Requires Node.js `^20.19` or `>=22.12`.
+## Run locally
 
 ```bash
 npm install
-cp .env.example .env.local   # then fill in the values you have
-npm run dev                  # http://localhost:5173
+npm run dev        # http://localhost:5173
+npm run build      # type-check + production build to dist/
+npm run preview    # serve the production build
 ```
 
-| Script | What it does |
-| --- | --- |
-| `npm run dev` | Development server with hot reload |
-| `npm run build` | Type-check and build to `dist/` |
-| `npm run preview` | Serve the production build locally |
-| `npm run check` | Type-check, lint and build in one go |
-
-Development helpers (dev server only): add `?reduced-motion` to the URL to preview the reduced-motion version, or `?no-webgl` to preview the still-image fallback. In the console, `__story.seek('stats')` jumps to a story section.
-
-## Configuration
-
-All deployment-specific values are environment variables (see `.env.example`). Anything left empty is hidden on the site — nothing is invented.
-
-| Variable | Purpose |
-| --- | --- |
-| `VITE_CONTACT_ENDPOINT` | **Required for the contact form to send.** A form service URL that accepts JSON and returns 2xx (e.g. Formspree, Web3Forms). Without it the form explains that online sending isn't set up and offers a pre-filled email instead. |
-| `VITE_CONTACT_ACCESS_KEY` | Only for services that need a key in the body (e.g. Web3Forms). |
-| `VITE_WHATSAPP_NUMBER` | WhatsApp number, international format, digits only. Shows the WhatsApp buttons. |
-| `VITE_PUBLIC_PHONE` | Phone number as it should be displayed. |
-| `VITE_SOCIAL_*` | Social profile URLs (Instagram, LinkedIn, Facebook, YouTube, Pinterest). |
-| `SITE_URL` | Public URL (no trailing slash). Adds canonical/Open Graph URLs and generates `sitemap.xml`. |
-
-## Editing content
-
-| What | Where |
-| --- | --- |
-| Portfolio projects | `src/content/projects.ts` — replace the concept records with real ones; set `status: 'completed'` only for genuine BuildRoots projects |
-| Services | `src/content/services.ts` |
-| About, contact copy, project types, budget ranges | `src/content/business.ts` |
-| Story words, philosophy, showreel caption | `src/content/story.ts` |
-| Email, location, nav links | `src/config/site.ts` |
-| Images and video | `src/assets/media/` |
-
-## Project structure
+## Structure
 
 ```
-src/
-  components/   Navigation, loading screen, 3D canvas wrapper (with WebGL fallback), footer
-  story/        Pinned scroll story: master GSAP timeline, schedule, sections A–F
-  scenes/       3D scene: procedural house, materials, garden, lighting, camera path
-  sections/     Portfolio, Services, About, Contact
-  content/      All site copy and records
-  config/       Business configuration (reads env vars)
-  lib/, hooks/  Shared helpers
+./
+  public/assets/            optimized images served as-is
+    brand/                  mark.png, logo-full.png (transparent)
+    projects/buildroots-office/
+                            exterior-*.webp, interior-*.webp,
+                            ground-floor-plan.webp (full 3625×4541, unaltered geometry)
+  scripts/optimize-images.mjs   regenerates public/assets from source PNGs (set ASSETS_SRC)
+  src/
+    data/site.ts            all copy, routes and project → asset mapping
+    hooks/useReducedMotion.ts
+    components/             Nav, Hero, Intro, Flagship, Interiors, StorySequence,
+                            FloorPlan + FloorPlanViewer, Services, Process, Contact, Footer
+    styles/global.css       design tokens + section styles
 ```
 
-## Deploying to Vercel
+## Behaviour notes
 
-1. Push this repository to GitHub.
-2. In Vercel, **Add New → Project** and import the repository. The Vite preset is detected (`vercel.json` sets build command `npm run build` and output `dist`).
-3. Under **Settings → Environment Variables**, add the variables above (at least `VITE_CONTACT_ENDPOINT` and `SITE_URL`). `VITE_*` values are baked in at build time, so redeploy after changing them.
-4. Deploy. `vercel.json` adds long-term caching for hashed assets and basic security headers.
-
-## Notes
-
-- The 3D bundle (~300 kB gzip) loads lazily after the page shell; without WebGL, or if it fails to load, a still render is shown and the rest of the site works normally.
-- Reduced-motion users get an opacity-only version with camera cuts instead of the fly-through.
-- Portfolio entries are currently concept/visualisation records and are labelled “Concept” on the site.
+- **Scroll reveals** fade in place (no movement); hero has a gentle parallax.
+- **Story sequence** is a sticky, scroll-driven crossfade: exterior → interior → actual ground-floor plan (all from the same project).
+- **Floor-plan viewer**: zoom buttons, mouse-wheel zoom (1×–6×), drag to pan, Fit, Full screen.
+- **Reduced motion**: reveals, parallax and the sticky sequence are disabled; the sequence becomes stacked stills.
+- **Enquiry form** validates name / email / message. No backend is configured, so a valid submission opens the visitor's
+  email app pre-filled to `connect@buildroots.in` and says so — it never claims the message was sent.
+- **Navigation**: the design links to separate Projects / About / Contact pages that are not built yet. Until they are,
+  `routes` in `src/data/site.ts` points those links at the matching Home sections. Change them there when the pages exist.
