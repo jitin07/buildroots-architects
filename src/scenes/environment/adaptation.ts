@@ -8,7 +8,7 @@ import { keyU } from '../camera/journey'
  */
 const ADAPT_START = keyU(4) + 0.03
 const ADAPT_END = keyU(5)
-const INTERIOR_EXPOSURE = 0.6
+const INTERIOR_EXPOSURE = 0.85
 
 export function exposureAt(u: number) {
   const t = MathUtils.smoothstep(u, ADAPT_START, ADAPT_END)

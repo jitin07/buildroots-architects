@@ -20,24 +20,24 @@ export default function PostFX() {
     <EffectComposer key={q.tier} multisampling={q.multisampling} enableNormalPass={q.ambientOcclusion}>
       {q.ambientOcclusion ? (
         <SSAO
-          samples={16}
-          rings={4}
-          radius={0.08}
-          intensity={22}
-          bias={0.02}
-          luminanceInfluence={0.6}
-          worldDistanceThreshold={30}
-          worldDistanceFalloff={8}
-          worldProximityThreshold={0.6}
-          worldProximityFalloff={0.3}
+          samples={20}
+          rings={5}
+          radius={0.25}
+          intensity={12}
+          bias={0.015}
+          luminanceInfluence={0.4}
+          worldDistanceThreshold={20}
+          worldDistanceFalloff={6}
+          worldProximityThreshold={1.0}
+          worldProximityFalloff={0.6}
         />
       ) : (
         <></>
       )}
-      <Bloom mipmapBlur luminanceThreshold={1.1} luminanceSmoothing={0.2} intensity={0.55} radius={0.7} />
+      <Bloom mipmapBlur luminanceThreshold={1.2} luminanceSmoothing={0.15} intensity={0.35} radius={0.6} />
       <AdaptiveExposure />
-      <ToneMapping mode={ToneMappingMode.ACES_FILMIC} />
-      <Vignette offset={0.28} darkness={0.62} />
+      <ToneMapping mode={ToneMappingMode.AGX} />
+      <Vignette offset={0.35} darkness={0.35} />
     </EffectComposer>
   )
 }

@@ -55,16 +55,19 @@ export default function Interior({ lightsPerFloor }: Props) {
         </mesh>
       ))}
 
-      {/* Warm interior light spill */}
+      {/* Warm interior light — 3000 K downlights at realistic levels */}
       {gfLights.map((x) => (
-        <pointLight key={`g${x}`} position={[x, ground.ceiling - 0.5, -1]} color="#ffbd7f" intensity={70} distance={13} decay={2} />
+        <pointLight key={`g${x}`} position={[x, ground.ceiling - 0.15, -0.5]} color="#ffd5a8" intensity={18} distance={8} decay={2} />
       ))}
       {ufLights.map((x) => (
-        <pointLight key={`u${x}`} position={[x, upper.ceiling - 0.5, -1]} color="#ffbd7f" intensity={60} distance={12} decay={2} />
+        <pointLight key={`u${x}`} position={[x, upper.ceiling - 0.15, -1.5]} color="#ffd5a8" intensity={15} distance={7} decay={2} />
       ))}
+      {/* Warm bounce fill from floors (fakes GI) */}
+      <pointLight position={[-1, gf + 0.3, -0.5]} color="#e8d4be" intensity={4} distance={10} decay={2} />
+      <pointLight position={[4, gf + 0.3, 0.5]} color="#e8d4be" intensity={3} distance={8} decay={2} />
       {/* Light pooling on the terrace under the canopy */}
-      <pointLight position={[-3, midSlab.bottom - 0.3, ground.maxZ + 0.7]} color="#ffcf9a" intensity={5} distance={7} decay={2} />
-      <pointLight position={[9, midSlab.bottom - 0.3, 2]} color="#ffcf9a" intensity={5} distance={7} decay={2} />
+      <pointLight position={[-3, midSlab.bottom - 0.3, ground.maxZ + 0.7]} color="#ffcf9a" intensity={3} distance={6} decay={2} />
+      <pointLight position={[9, midSlab.bottom - 0.3, 2]} color="#ffcf9a" intensity={3} distance={6} decay={2} />
     </group>
   )
 }

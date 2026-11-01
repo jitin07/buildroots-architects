@@ -45,7 +45,7 @@ export const QUALITY: Record<Tier, QualitySettings> = {
     ambientOcclusion: false,
     multisampling: 0,
     shadowMapSize: 1024,
-    reflectionResolution: 256,
+    reflectionResolution: 512,
     interiorLights: 1,
   },
 }
