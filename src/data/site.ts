@@ -70,6 +70,21 @@ export const steps = [
   { num: "05", title: "Deliver", body: "Built on site with oversight, down to the final detail." },
 ];
 
+const anupJiHouse = "/assets/projects/anup-ji-house";
+
+export const projects = [
+  {
+    slug: "anup-ji-house",
+    name: "Anup Ji House",
+    cover: { src: `${anupJiHouse}/exterior-front.png`, alt: "Anup Ji House — modern residential exterior at dusk" },
+    meta: [
+      { label: "Type", value: "Residential" },
+      { label: "Scope", value: "Architecture + Interiors" },
+      { label: "Status", value: "In Progress" },
+    ],
+  },
+];
+
 export const projectTypes = [
   "Residential Architecture",
   "Commercial Architecture",

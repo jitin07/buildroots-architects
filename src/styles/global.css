@@ -240,3 +240,15 @@ select.field option { color: var(--emerald); }
 .footer__email { color: var(--cream); font-size: 16px; }
 .footer__enquire { display: block; width: fit-content; margin-top: 18px; color: var(--gold); font-size: 13px; letter-spacing: .14em; text-transform: uppercase; font-weight: 600; }
 .footer__base { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; padding-top: 28px; font-size: 13px; color: #7f948c; }
+
+/* ── Projects grid ── */
+.projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 32px; margin-top: 48px; }
+.project-card { background: var(--panel); border-radius: 12px; overflow: hidden; }
+.project-card__figure { aspect-ratio: 16/10; overflow: hidden; }
+.project-card__figure img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
+.project-card:hover .project-card__figure img { transform: scale(1.04); }
+.project-card__info { padding: 24px 28px 28px; }
+.project-card__name { font-family: var(--ff-display); font-size: 22px; color: var(--cream); margin-bottom: 16px; }
+.meta--sm .meta__label { font-size: 10px; }
+.meta--sm .meta__value { font-size: 14px; }
+@media (max-width: 600px) { .projects-grid { grid-template-columns: 1fr; } }
